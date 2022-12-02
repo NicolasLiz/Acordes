@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chord Generator</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+    background-color: #121219;
+}
+
+#main {
+    text-align: center;
+}
+
+#chord {
+    margin-top: 10%;
+    color: rgb(0, 0, 0);
+    font-size: 80px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-shadow: 0 0 5px rgb(87, 87, 87);
+}
+
+#butt {
+    border-radius: 7px;
+    width: 300px;
+    height: 100px;
+    font-size: xx-large;
+    margin-top: 10%;
+    border-width: 5px;
+    background-color: #525259;
+}
+
+#butt:hover {
+    background-color: #5b5b66;
+}
+
+#butt:active {
+    background-color: #3c3c41;
+}
+    </style>
+</head>
+<body>
+    <div id="main">
+        <button id="butt" onclick="generate()">NEW CHORD</button>
+    </div>
+    <script>
+        const notes = ["C", "D", "E", "F", "G", "A", "B"];
+        const mods = ["#", "b", ""]
+        const types = ["maj", "min", "dim", "aug", "7maj", "7dom", "7min", "7hdim", "7dim"]
+        
+        const chord = document.createElement("h1")
+        chord.id = "chord"
+        const main = document.getElementById("main")
+        main.appendChild(chord)
+        main.insertBefore(chord, document.getElementById("butt"))
+        
+        function getRandomInt(max) {
+            return Math.floor(Math.random() * max);
+          }
+        
+        function generate() {
+            chord.textContent = notes[getRandomInt(7)] + mods[getRandomInt(3)] + types[getRandomInt(9)]
+        }
+        
+        generate()
+    </script>
+</body>
+</html>
